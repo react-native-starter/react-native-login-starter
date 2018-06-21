@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   text: PropTypes.string.isRequired,
-  type:PropTypes.string,
+  type: PropTypes.string,
   shape: PropTypes.string,
   textStyle: Text.propTypes.style,
   buttonStyle: PropTypes.any,
