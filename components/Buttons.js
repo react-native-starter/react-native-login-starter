@@ -3,25 +3,20 @@ import { StyleSheet, Text, View, TouchableOpacity, ViewPropTypes } from 'react-n
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  text: PropTypes.string.isRequired,
-  type:PropTypes.string,
+  text: PropTypes.string,
+  type: PropTypes.string,
   shape: PropTypes.string,
   textStyle: Text.propTypes.style,
   buttonStyle: PropTypes.any,
   disabled: PropTypes.bool,
   onPress: PropTypes.func,
+
 };
 const defaultProps = {
-  text: 'hello',
-  buttonStyle: {
-    flexDirection: 'row',
-    overflow: 'hidden',
-    width: 250,
-    height: 50,
-    backgroundColor: 'grey',
-    alignItems:'center',
-    justifyContent:'center'
-  },
+  type: 'primary',
+  shape: 'round',
+  text: 'Get Started',
+  disabled: false,
 };
 
 export default class Buttons extends React.Component {
@@ -41,11 +36,38 @@ export default class Buttons extends React.Component {
       content = (
         <View
           style={[
+            styles.defaultButton,
             buttonStyle,
             shapeStyle
           ]}>
-          <Text style={textStyle}>{text}</Text>
-          </View>
+          <Text style={[styles.defaultText, textStyle]}>{text}</Text>
+        </View>
+      );
+    }
+    else if (type === 'outline') {
+      content = (
+        <View
+          style={[
+            buttonStyle,
+            shapeStyle, 
+            styles.defaultButton,
+            styles.outline
+          ]}>
+          <Text style={[styles.defaultText, textStyle]}>{text}</Text>
+        </View>
+      );
+    }
+    else if (type === 'twitter') {
+      content = (
+        <View
+          style={[
+            buttonStyle,
+            shapeStyle,
+            styles.defaultButton,
+            styles.twitter
+          ]}>
+          <Text style={[styles.defaultText, textStyle]}>{text}</Text>
+        </View>
       );
     }
     else if (type === 'gmail') {
@@ -54,14 +76,15 @@ export default class Buttons extends React.Component {
           style={[
             buttonStyle,
             shapeStyle,
-          ]
-          }>
-          <Text style={textStyle}>{text}</Text>
+            styles.defaultButton,
+            styles.gmail
+          ]}>
+          <Text style={[styles.defaultText, textStyle]}>{text}</Text>
         </View>
       );
     }
     return (
-      <TouchableOpacity 
+      <TouchableOpacity
         shape={shape}
         onPress={onPress}
         type={type}
@@ -71,3 +94,28 @@ export default class Buttons extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  outline: {
+    backgroundColor: 'transparent',
+    borderWidth: 1.5,
+  },
+  twitter: {
+    backgroundColor: '#2AA3EF',
+  },
+  gmail: {
+    backgroundColor: 'red',
+  },
+  defaultButton: {
+    flexDirection: 'row',
+    overflow: 'hidden',
+    width: 320,
+    height: 50,
+    backgroundColor: '#333333',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  defaultText: {
+    fontSize: 16
+  }
+});

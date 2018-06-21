@@ -7,7 +7,8 @@ export default class LoginScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Buttons
-        type={'primary'}
+        type={'gmail'}
+
         />
       </View>
     );
