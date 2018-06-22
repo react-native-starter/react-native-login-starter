@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
+import { FontAwesome } from '@expo/vector-icons';
 
 const propTypes = {
   text: PropTypes.string,
@@ -10,11 +11,10 @@ const propTypes = {
   buttonStyle: PropTypes.any,
   disabled: PropTypes.bool,
   onPress: PropTypes.func,
-
 };
 const defaultProps = {
   type: 'primary',
-  shape: 'round',
+  // shape: 'round',
   text: 'Get Started',
   disabled: false,
 };
@@ -28,7 +28,7 @@ export default class Buttons extends React.Component {
     let shapeStyle;
     if (['round', 'circle'].includes(shape)) {
       shapeStyle = {
-        borderRadius: 5,
+        borderRadius: 10,
       };
     }
     let content;
@@ -48,10 +48,10 @@ export default class Buttons extends React.Component {
       content = (
         <View
           style={[
+            styles.defaultButton,
+            styles.outline,
             buttonStyle,
             shapeStyle, 
-            styles.defaultButton,
-            styles.outline
           ]}>
           <Text style={[styles.defaultText, textStyle]}>{text}</Text>
         </View>
@@ -61,11 +61,12 @@ export default class Buttons extends React.Component {
       content = (
         <View
           style={[
+            styles.defaultButton,
+            styles.twitter,
             buttonStyle,
             shapeStyle,
-            styles.defaultButton,
-            styles.twitter
           ]}>
+          <FontAwesome name="twitter" size={30} color="white" style={styles.logo} />
           <Text style={[styles.defaultText, textStyle]}>{text}</Text>
         </View>
       );
@@ -74,11 +75,40 @@ export default class Buttons extends React.Component {
       content = (
         <View
           style={[
+            styles.defaultButton,
+            styles.gmail,
             buttonStyle,
             shapeStyle,
-            styles.defaultButton,
-            styles.gmail
           ]}>
+          <FontAwesome name="google" size={30} color="white" style={styles.logo} />
+          <Text style={[styles.defaultText, textStyle]}>{text}</Text>
+        </View>
+      );
+    }
+    else if (type === 'github') {
+      content = (
+        <View
+          style={[
+            styles.defaultButton,
+            styles.github,
+            buttonStyle,
+            shapeStyle,
+          ]}>
+          <FontAwesome name="github" size={30} color="white" style={styles.logo} />
+          <Text style={[styles.defaultText, textStyle]}>{text}</Text>
+        </View>
+      );
+    }
+    else if (type === 'linkedin') {
+      content = (
+        <View
+          style={[
+            styles.defaultButton,
+            styles.linkedin,
+            buttonStyle,
+            shapeStyle,
+          ]}>
+          <FontAwesome name="linkedin" size={30} color="white" style={styles.logo} />
           <Text style={[styles.defaultText, textStyle]}>{text}</Text>
         </View>
       );
@@ -100,22 +130,33 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderWidth: 1.5,
   },
+  logo: {
+    marginRight: 20,
+  },
   twitter: {
-    backgroundColor: '#2AA3EF',
+    backgroundColor: '#56A3EE',
+  },
+  github: {
+    backgroundColor: '#333333'
   },
   gmail: {
-    backgroundColor: 'red',
+    backgroundColor: '#CD3F18',
+  },
+  linkedin: {
+    backgroundColor: '#0C81BB',
   },
   defaultButton: {
     flexDirection: 'row',
     overflow: 'hidden',
-    width: 320,
+    padding: 8,
+    width: 200,
     height: 50,
     backgroundColor: '#333333',
     alignItems: 'center',
     justifyContent: 'center'
   },
   defaultText: {
-    fontSize: 16
+    fontSize: 16,
+    color: 'white'
   }
 });
