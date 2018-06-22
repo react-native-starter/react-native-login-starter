@@ -25,6 +25,7 @@ export default class Buttons extends React.Component {
 
   render() {
     const { text, buttonStyle, textStyle, type, shape, onPress } = this.props;
+    console.log(text);
     let shapeStyle;
     if (['round', 'circle'].includes(shape)) {
       shapeStyle = {
@@ -146,6 +147,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0C81BB',
   },
   defaultButton: {
+    marginTop: 10,
     flexDirection: 'row',
     overflow: 'hidden',
     padding: 8,

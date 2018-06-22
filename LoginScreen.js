@@ -1,14 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View, } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Buttons from './components/Buttons'
+import TextField from './components/TextField';
 
 export default class LoginScreen extends React.Component {
+
   render() {
     return (
       <View style={styles.container}>
+        <TextField
+          placeholder={'Email'}
+        />
+
+        <TextField
+          placeholder={'Password'}
+          type={'password'}
+        />
+
         <Buttons
-        type={'primary'}
-        shape={'round'}
+          type={'outline'}
+          shape={'round'}
+          text={'Sign In'}
         />
       </View>
     );
