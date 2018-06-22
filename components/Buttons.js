@@ -10,7 +10,6 @@ const propTypes = {
   buttonStyle: PropTypes.any,
   disabled: PropTypes.bool,
   onPress: PropTypes.func,
-
 };
 const defaultProps = {
   type: 'primary',
@@ -25,6 +24,7 @@ export default class Buttons extends React.Component {
 
   render() {
     const { text, buttonStyle, textStyle, type, shape, onPress } = this.props;
+    console.log(text);
     let shapeStyle;
     if (['round', 'circle'].includes(shape)) {
       shapeStyle = {
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   defaultButton: {
+    marginTop: 10,
     flexDirection: 'row',
     overflow: 'hidden',
     width: 320,

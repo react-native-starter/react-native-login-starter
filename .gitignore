@@ -45,3 +45,9 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+# Metro Cache
+/metro-cache-ede0f8b30f9b74479e06e16658ecdeefb3ae8460
+/haste-map-metro-3-91f91a77de450b81378c07e9b9d62e9d
+/yarn.lock
+
